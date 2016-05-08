@@ -2,7 +2,7 @@
 
 Turn your wired gamepad into wireless with this simple project.
 
-[gamepad]----[RaspberryPi/PC(Gamepad)]~~~~~~~~~~~~~~~WiFi~~~~~~~~~~~~~~~[PC(Game)]----[TV]
+[gamepad]----[RaspberryPi/PC(Gamepad)]~~~~~~~~~~~~~~ WiFi ~~~~~~~~~~~~~~[PC(Game)]----[TV]
 
 # Installation
 
