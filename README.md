@@ -6,12 +6,12 @@ Turn your wired gamepad into wireless with this simple project.
 
 # Installation
 
-## PC(Game)
+### PC(Game)
 1. Install [nodejs](https://nodejs.org/en/)
 2. Install [mingw64](http://mingw-w64.org/doku.php/download) Mingw-builds.
 3. Download and install [vJoySetup.exe](https://sourceforge.net/projects/vjoystick/files/).
 
-## RaspberryPi/PC(Gamepad)
+### RaspberryPi/PC(Gamepad)
 1. Clone the project.
 2. Copy vJoyInterface.dll from vJoy installation directory to project directory.
 3. Run compile.bat
