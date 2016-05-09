@@ -23,7 +23,7 @@ Change ip address in MainACtivity.java to PC(Game) ip address
 2. Connect PC(Game) to TV using HDMI / VGA cable. (Optional)
 3. Run server.js on PC(Game): node server.js
 4. Connect gamepad to RaspberryPi / PC(Gamepad).
-5. Run Client.py on RaspberryPi / PC(Gamepad): python client.py PC(Game-IP-ADDRESS or run Android app
+5. Run Client.py on RaspberryPi / PC(Gamepad): python client.py PC(Game)-IP-ADDRESS or run Android app
 6. Run the game.
 7. Lean on the sofa and enjoy the game. (Requierd)
 
