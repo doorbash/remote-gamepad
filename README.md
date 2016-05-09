@@ -16,7 +16,7 @@ Turn your wired gamepad into wireless with this simple project.
 Install [python 2.7](https://www.python.org/).
 
 ### Android
-1. Change ip address in MainACtivity.java to PC(Game) ip address
+1. Change ip address in MainActivity.java to PC(Game) ip address
 2. Build application
 
 # Usage
