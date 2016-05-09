@@ -1,0 +1,1 @@
+g++ -fpermissive -w -Iinc -o vJoy.exe -L. -lvJoyInterface src\vJoyClient.cpp
