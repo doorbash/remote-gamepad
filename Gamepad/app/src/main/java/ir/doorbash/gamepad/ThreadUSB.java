@@ -65,7 +65,8 @@ class ThreadUSB extends Thread {
 
             }
 
-            int pad = 0;
+            int pad = -1;
+            int old_pad = 0;
 
             while (true) {
 
@@ -77,6 +78,8 @@ class ThreadUSB extends Thread {
                 } else {
 
                     device_id = id;
+
+                    old_pad = pad;
 
 
                     switch (gamePadType) {
@@ -102,7 +105,8 @@ class ThreadUSB extends Thread {
                             break;
                     }
                 }
-                socket.emit("event",pad);
+                if(old_pad != pad)
+                    socket.emit("e",pad);
             }
 
 

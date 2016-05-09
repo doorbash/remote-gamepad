@@ -7,7 +7,7 @@ child.stdout.pipe(process.stdout);
 io.on('connection', function(socket)
 {
 	console.log('client connected')
-	socket.on('event', function(data)
+	socket.on('e', function(data)
 	{
 		bin = parseInt(data).toString(2)
 		bin = "0".repeat(22-bin.length) + bin

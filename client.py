@@ -16,10 +16,14 @@ with SocketIO(sys.argv[1], 3000, LoggingNamespace) as socketIO:
     numAxes = j.get_numaxes()
     numHats = j.get_numhats()
 
+    data = -1
+    old = 0
+
     try:
         while True:
             pygame.event.pump()
 
+            old = data
             data = 0
 
             for i in range(0, numButtons):
@@ -44,10 +48,8 @@ with SocketIO(sys.argv[1], 3000, LoggingNamespace) as socketIO:
                 elif y < 0:
                     data += 1 << i + 3
 
-            # if data > 0:
-            socketIO.emit('event',str(data))
-
-            
+            if old != data:   
+                socketIO.emit('e',str(data))
 
     except KeyboardInterrupt:
         j.quit()
