@@ -11,6 +11,7 @@ Turn your wired gamepad into wireless with this simple project.
 4. Clone the project.
 5. Copy vJoyInterface.dll from vJoy installation directory to project directory.
 6. Run compile.bat
+7. Run vJoyConf.exe in vJoy installation directory to add more gamepads and buttons.
 
 ### RaspberryPi/PC(Gamepad)
 Install [python 2.7](https://www.python.org/).
@@ -29,5 +30,7 @@ Install [python 2.7](https://www.python.org/).
 7. Lean on the sofa and enjoy the game. (Requierd)
 
 # Note
-Android application detects a few gamepad models.Feel free to add yours or even change input reading code entirely.
-Also you can edit src/vJoyClient.cpp file to add more axes or buttons.This config works for me to play old retro games with my gamepad ^_^
+Android application detects a few gamepad models.You can add yours or even change input reading code entirely.
+Also you can edit src/vJoyClient.cpp file to make it support your gamepad keys.
+This config works for me to play old genesis games ^_^
+Anyway you probably need to get your hands dirty to get this working as you want.
