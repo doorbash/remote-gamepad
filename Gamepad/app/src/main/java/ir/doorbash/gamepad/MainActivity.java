@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     UsbManager usbManager;
-    ThreadUSB thread;
+    List<ThreadUSB> threads = new ArrayList<>();
     private Socket socket;
 
     @Override
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Log.d(TAG,"hello there!");
+        Log.d(TAG, "hello there!");
 
 
         initSocket("http://192.168.1.16:3000");
@@ -51,20 +53,19 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
         Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
 
+        threads.clear();
+
         while (deviceIterator.hasNext()) {
             UsbDevice device = deviceIterator.next();
 
             int vendor = device.getVendorId();
             int product = device.getProductId();
 
-
             if (GamePadUtil.isGamepadSupported(vendor, product)) {
                 try {
-
-                    thread = new ThreadUSB(this, device, 1,socket);
+                    ThreadUSB thread = new ThreadUSB(this, device, threads.size(), socket);
+                    threads.add(thread);
                     thread.start();
-                    break;
-
                 } catch (Exception eee) {
                 }
             }
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this,"Connected to server",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Connected to server", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this,"Connection closed.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Connection closed.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -150,18 +151,18 @@ public class MainActivity extends AppCompatActivity {
             }).on(Socket.EVENT_ERROR, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    Log.d(TAG,args.toString());
+                    Log.d(TAG, args.toString());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this,"Connection error.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Connection error.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             });
             socket.connect();
         } catch (Exception e) {
-            Log.d(TAG,e.getMessage());
+            Log.d(TAG, e.getMessage());
         }
     }
 
@@ -172,22 +173,24 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(mUsbReceiver);
         } catch (Exception e) {
         }
-        try
-        {
+        try {
             socket.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
-        if(thread != null)
-        {
-            thread.kill = true;
-            thread = null;
+        try {
+
+            if (threads != null) {
+                for (ThreadUSB thread : threads) {
+                    thread.kill = true;
+                }
+                threads.clear();
+            }
+        } catch (Exception e) {
+
         }
         super.onDestroy();
     }
-
 
 
 }

@@ -106,7 +106,7 @@ class ThreadUSB extends Thread {
                     }
                 }
                 if(old_pad != pad)
-                    socket.emit("e",pad);
+                    socket.emit("e",id + " " + pad);
             }
 
 
