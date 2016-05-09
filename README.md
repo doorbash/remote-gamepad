@@ -16,14 +16,15 @@ Turn your wired gamepad into wireless with this simple project.
 Install [python 2.7](https://www.python.org/).
 
 ### Android
-Change ip address in MainACtivity.java to PC(Game) ip address
+1. Change ip address in MainACtivity.java to PC(Game) ip address
+2. Build application
 
 # Usage
-1. Connect PC(Game) and RaspberryPi/PC(Gamepad) to same network.
+1. Connect PC(Game) and Android/RaspberryPi/PC(Gamepad) to same network.
 2. Connect PC(Game) to TV using HDMI / VGA cable. (Optional)
 3. Run server.js on PC(Game): node server.js
-4. Connect gamepad to RaspberryPi / PC(Gamepad).
-5. Run Client.py on RaspberryPi / PC(Gamepad): python client.py PC(Game)-IP-ADDRESS or run Android app
+4. Connect gamepad to Android / RaspberryPi / PC(Gamepad).
+5. Run Client.py on RaspberryPi / PC(Gamepad): python client.py PC(Game)-IP-ADDRESS or run Android application
 6. Run the game.
 7. Lean on the sofa and enjoy the game. (Requierd)
 
